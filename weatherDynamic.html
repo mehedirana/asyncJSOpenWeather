@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="myBtn">fetch it</button>
+    <div id="info">
+
+    </div>
+    
+    <script>
+        document.getElementById("myBtn").onclick =()=>{
+         fetch(`http://api.openweathermap.org/data/2.5/weather?q=dhaka&units=metric&APPID=3ae4e2ffb7fafdd99e5f03f0265a98eb`)
+         .then(data =>{
+            return data.json()
+
+         }).then(data1 =>{
+             
+
+            document.getElementById("info").innerHTML=`
+            
+                 <ol>City name: ${data1.name}</ol>
+                 <ol>Temparature(celcious): ${data1.main.temp}</ol>
+                 <ol>forcast: ${data1.weather[0].description}</ol>
+
+            `
+            // console.log(data1)
+            // console.log(data1.name)
+            // console.log(data1.main.temp)
+            // console.log(data1.weather[0].description)
+         })
+        //
+        }   
+     </script>
+</body>
+</html>
